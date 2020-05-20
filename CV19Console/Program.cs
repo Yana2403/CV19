@@ -6,7 +6,7 @@ namespace CV19Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
