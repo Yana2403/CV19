@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CV19.ViewModels.Base
 {
-    internal abstract class ViewModel : INotifyPropertyChanged //интерфейс для изменений
+    internal abstract class ViewModel : INotifyPropertyChanged, IDisposable //интерфейс для изменений
 
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -20,6 +20,23 @@ namespace CV19.ViewModels.Base
             field = value; //если нет,то обновляем
             OnPropertyChanged(PropertyName);
             return true;
+        }
+        //~ViewModel()
+        //{
+        //    Dispose(false);
+        //}
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        private bool _Disposed;
+        protected virtual void Dispose(bool Disposing)
+        {
+            if (!Disposing || _Disposed) return;
+            _Disposed = true;
+            // Освобождение управляемых ресурсов
         }
     }
 }
